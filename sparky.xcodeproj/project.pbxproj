@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		887566132A1403BA0030AE77 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887566122A1403BA0030AE77 /* main.swift */; };
+		8875661E2A1403FA0030AE77 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 8875661D2A1403FA0030AE77 /* ArgumentParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		8875660F2A1403BA0030AE77 /* sparky */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sparky; sourceTree = BUILT_PRODUCTS_DIR; };
 		887566122A1403BA0030AE77 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		8875661A2A1403E10030AE77 /* prompt-params.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "prompt-params.csv"; sourceTree = "<group>"; };
+		8875661B2A1403E10030AE77 /* prompt-template.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "prompt-template.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8875661E2A1403FA0030AE77 /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +45,7 @@
 		887566062A1403BA0030AE77 = {
 			isa = PBXGroup;
 			children = (
+				887566192A1403E10030AE77 /* Sample Data */,
 				887566112A1403BA0030AE77 /* sparky */,
 				887566102A1403BA0030AE77 /* Products */,
 			);
@@ -62,6 +67,15 @@
 			path = sparky;
 			sourceTree = "<group>";
 		};
+		887566192A1403E10030AE77 /* Sample Data */ = {
+			isa = PBXGroup;
+			children = (
+				8875661A2A1403E10030AE77 /* prompt-params.csv */,
+				8875661B2A1403E10030AE77 /* prompt-template.txt */,
+			);
+			path = "Sample Data";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,6 +92,9 @@
 			dependencies = (
 			);
 			name = sparky;
+			packageProductDependencies = (
+				8875661D2A1403FA0030AE77 /* ArgumentParser */,
+			);
 			productName = sparky;
 			productReference = 8875660F2A1403BA0030AE77 /* sparky */;
 			productType = "com.apple.product-type.tool";
@@ -106,6 +123,9 @@
 				Base,
 			);
 			mainGroup = 887566062A1403BA0030AE77;
+			packageReferences = (
+				8875661C2A1403FA0030AE77 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = 887566102A1403BA0030AE77 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -284,6 +304,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8875661C2A1403FA0030AE77 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8875661D2A1403FA0030AE77 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8875661C2A1403FA0030AE77 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 887566072A1403BA0030AE77 /* Project object */;
 }

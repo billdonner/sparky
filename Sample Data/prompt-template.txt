@@ -1,0 +1,17 @@
+ 
+
+//PROMPT consider the following structure
+struct Challenge   {
+  let id : String
+  let generated: String
+  let question: String
+  let topic: String
+  let hint:String // a hint to show if the user needs help
+  let answers: [String]
+  let answer: String // which answer is correct
+  let explanation: [String] // reasoning behind the correctAnswer
+  let article: String // URL of article about the correct Answer
+  let image:String // URL of image of correct Answer
+}
+
+/* Generate $2 Challenges as an Array of JSON each with an interesting, pithy, question and  three answers and at least one explanation per question on the Subject of $0 , setting the topic to $1 and the id to $BATCHID and the generated to $GENERATED */
