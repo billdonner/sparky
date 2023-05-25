@@ -1,17 +1,31 @@
- 
-
+////author: wld date: 24 May 2023
 //PROMPT consider the following structure
 struct Challenge   {
   let id : String
-  let generated: String
+  let idx: Int // index within json array
+  let timestamp: String // time and date when generated
   let question: String
   let topic: String
   let hint:String // a hint to show if the user needs help
   let answers: [String]
-  let answer: String // which answer is correct
-  let explanation: [String] // reasoning behind the correctAnswer
+  let correct: String // which answer is correct
+  let explanation: String // reasoning behind the correctAnswer
   let article: String // URL of article about the correct Answer
   let image:String // URL of image of correct Answer
 }
 
-/* Generate $2 Challenges as an Array of JSON each with an interesting, pithy, question and  three answers and at least one explanation per question on the Subject of $0 , setting the topic to $1 and the id to $BATCHID and the generated to $GENERATED */
+/* Generate $2 Challenges as an Array of JSON each with an interesting, pithy, question and  Four answers and at least one explanation per question
+ 
+ on the Subject of $0 ,
+ setting the topic to $1 
+ 
+ and the idx to $INDEX
+ and the id to $UUID
+ and the timestamp to $NOW
+ Do not include trailing commas in the answers json array
+ Ensure all field names are lowercase and trimmed of whitespace
+ Ensure all field names are enclosed in double-quotes
+ Ensure that answer field is not an array
+ Translate "‘" to "'" within field values */
+let challenge = [
+  {

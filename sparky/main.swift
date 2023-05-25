@@ -39,6 +39,21 @@ import Foundation
 
 import ArgumentParser
 
+
+func generatePumperStuff(_ inputTextFile: URL, _ substitutions: [[String]]) throws  -> String  {
+  let template0:String = try String(contentsOf: inputTextFile)
+  var output = ""
+  for row in 0..<substitutions.count {
+    var line = template0.replacingOccurrences(of: "$GENERATED", with: "\(Date())")
+    for col in 0..<substitutions[row].count {
+      let el = substitutions[row][col]
+      line = line.replacingOccurrences(of: "$\(col)", with: el)
+    }
+    output  += line + "***"
+  }
+  return output
+}
+
 extension String {
     func removeLinesStartingWithDoubleSlashes() -> String {
         let lines = self.components(separatedBy: CharacterSet.newlines)
@@ -52,9 +67,26 @@ extension String {
         return result.joined(separator: "\n")
     }
 }
+func parseSubstitutionsCSVFile(_ url: URL) throws -> [[String]] {
+  // Load substitutions CSV file
+  let csvString = try String(contentsOf: url)
+  let csvRows = csvString.removeLinesStartingWithDoubleSlashes().components(separatedBy: .newlines)
+  let substitutions = csvRows.map { row in
+    return row.components(separatedBy: ",")
+  }
+  return substitutions
+}
 
-struct Sparky: ParsableCommand {
-  
+func generateFileName(prefixPath:String) -> String {
+  let date = Date()
+  let formatter = DateFormatter()
+  formatter.dateFormat = "yyyyMMdd_HHmmss"
+  let dateString = formatter.string(from: date)
+  let fileName = prefixPath + "_" + dateString + ".txt"
+  return fileName
+}
+
+struct Sparky: ParsableCommand { 
   static var configuration = CommandConfiguration(
     abstract: "Generate Many Outputs From One Template and A CSV File of Parameters",
     discussion: "The template file is any file with $0 - $9 symbols that are replaced by values supplied in the CSV File.\nEach line of the CSV generates another output file.\n")
@@ -64,99 +96,85 @@ struct Sparky: ParsableCommand {
   
   @Argument(  help: "The substitutions CSV file URL")
   var substitutionsCSVFileURL: String
-  
-  @Argument(  help: "batch id")
-  var id:String
-  
-  @Argument(  help: "Initials of yourself")
-  var who:String
-  
+
   @Option(name: .shortAndLong, help: "The optional output text file URL otherwise outputs to the console")
   var output: String?
-  
-  @Option(name: .shortAndLong, help: "The optional output mode if a file is specified, values are UNIQUE (default), CHATGPT, and BARD")
-  var mode: String?
-  
-  
-  
+
+  func sparky_essence(_ substitutionsCSVFile: URL, _ inputTextFile: URL) throws {
+    let outputTextFile = output != nil ? URL(string: output!) : nil
+    let substitutions = Array(try parseSubstitutionsCSVFile(substitutionsCSVFile).dropLast())
+    let fallback = URL(string:"~/sparky")!
+    let primary = outputTextFile?.deletingPathExtension()
+    let outputFileName = generateFileName(prefixPath: "\(primary ?? fallback)")
+    let outputFilesString =  try generatePumperStuff(inputTextFile, substitutions)
+    if output != nil {
+      if let outputFile  = URL(string:outputFileName) {
+        do {
+          print("Writing \(substitutions.count) prompts to \(outputFileName).")
+          try outputFilesString.write(to:outputFile,atomically:true, encoding: .utf8)
+          print("Generated \(outputFilesString.count) bytes of prompts files.")
+        }
+        catch {
+          print("could not write to \(outputFileName), \(error)")
+        }
+      }
+    } else {
+      print(outputFilesString)
+    }
+  }
   func run() throws {
     guard let inputTextFile = URL(string: inputTextFileURL),
           let substitutionsCSVFile = URL(string: substitutionsCSVFileURL) else {
       throw ValidationError("Input and substitutions file URLs must be valid")
     }
-    
     let start_time = Date()
     print("Command Line: \(CommandLine.arguments) \n")
-    let outputTextFile = output != nil ? URL(string: output!) : nil
-    
-    let substitutions = Array(try parseSubstitutionsCSVFile(substitutionsCSVFile).dropLast())
-    let outputFiles =  try generateOutputFiles(inputTextFile, substitutions, outputTextFile)
-    print("Read \(substitutions.count) variations from csv file.")
-    
-    print("Generated \(outputFiles.count) prompts.")
-    if output != nil  {
-      outputFiles.forEach { outputFile in
-        print(outputFile.absoluteString)
-      }
-    }
+    try sparky_essence(substitutionsCSVFile, inputTextFile)
     let elapsed = Date().timeIntervalSince(start_time)
     print("Elapsed \(elapsed) secs")
-  }
-  
-  func parseSubstitutionsCSVFile(_ url: URL) throws -> [[String]] {
-    // Load substitutions CSV file
-    let csvString = try String(contentsOf: url)
-    let csvRows = csvString.removeLinesStartingWithDoubleSlashes().components(separatedBy: .newlines)
-    let substitutions = csvRows.map { row in
-      return row.components(separatedBy: ",")
-    }
-    return substitutions
-  }
-  
-  func generateOutputFiles(_ inputTextFile: URL, _ substitutions: [[String]], _ outputTextFile: URL?) throws -> [URL] {
-    let date = Date()
-    var outputFiles = [URL]()
-    for (index, substitution) in substitutions.enumerated()  {
-      if substitution != [] {
-        let outputFileName = (outputTextFile?.lastPathComponent ?? inputTextFile.deletingPathExtension().lastPathComponent) + "-" + who + "-" + id  + "-" +  String(format: "%03d", index + 1)
-        let outputFile = outputTextFile?.deletingLastPathComponent().appendingPathComponent(outputFileName).appendingPathExtension("txt") ?? inputTextFile.deletingLastPathComponent().appendingPathComponent(outputFileName).appendingPathExtension("txt")
-        
-        let inputString = try String(contentsOf: inputTextFile)
-        
-        var outputString = inputString
-        for (i, symbol) in substitution.enumerated() {
-          outputString = outputString.replacingOccurrences(of: "$\(i)", with: symbol)
-        }
-        // insert batchid
-      
-        outputString = outputString.replacingOccurrences(of: "$GENERATED", with: "\(date)")
-        outputString = outputString.replacingOccurrences(of: "$BATCHID", with: id )
-        if outputString != "" {
-          if outputTextFile != nil { // output filespec was given
-            try outputString.write(to: outputFile, atomically: true, encoding: .utf8)
-          } else {
-            print("Prompt: \(index+1)")
-            print("generated: \(date)")
-          
-              print ("batch id: \(id)")
-           
-      
-              print("who: \(who)")
-            
-            print("args: \(substitution)")
-            print("template: \(inputTextFile)")
-            print("+--------------- Cut Here and Paste into AI--------------------------+\n")
-            
-            print(outputString)
-            
-            print("+------------------  End of Cut Area  -------------------------------+\n")
-          }
-        }
-        outputFiles.append(outputFile)
-      }
-    }
-    return outputFiles
   }
 }
 
 Sparky.main()
+
+//func generatePumperFiles(_ inputTextFile: URL, _ substitutions: [[String]], _ outputTextFile: URL?) throws -> [URL] {
+//  let date = Date()
+//  var outputFiles = [URL]()
+//  for (index, substitution) in substitutions.enumerated()  {
+//    if substitution != [] {
+//
+//      let outputFileName = (outputTextFile?.deletingPathExtension().lastPathComponent ?? inputTextFile.deletingPathExtension().lastPathComponent) + String(format:"%03d",index+1)
+//
+//      let outputFile = outputTextFile?.deletingLastPathComponent().appendingPathComponent(outputFileName).appendingPathExtension("txt") ?? inputTextFile.deletingLastPathComponent().appendingPathComponent(outputFileName).appendingPathExtension("txt")
+//
+//      let inputString = try String(contentsOf: inputTextFile)
+//
+//      var outputString = inputString
+//      for (i, symbol) in substitution.enumerated() {
+//        outputString = outputString.replacingOccurrences(of: "$\(i)", with: symbol)
+//      }
+//      // insert batchid
+//
+//      outputString = outputString.replacingOccurrences(of: "$GENERATED", with: "\(date)")
+//      if outputString != "" {
+//        if outputTextFile != nil { // output filespec was given
+//
+//          try outputString.write(to: outputFile, atomically: true, encoding: .utf8)
+//
+//        } else {
+//          print("Prompt: \(index+1)")
+//          print("generated: \(date)")
+//          print("args: \(substitution)")
+//          print("template: \(inputTextFile)")
+//          print("+--------------- Cut Here and Paste into AI--------------------------+\n")
+//
+//          print(outputString)
+//
+//          print("+------------------  End of Cut Area  -------------------------------+\n")
+//        }
+//      }
+//      outputFiles.append(outputFile)
+//    }
+//  }
+//  return outputFiles
+//}
