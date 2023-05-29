@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		884DDEA02A24109F00DD138F /* q20kshare in Frameworks */ = {isa = PBXBuildFile; productRef = 884DDE9F2A24109F00DD138F /* q20kshare */; };
 		887566132A1403BA0030AE77 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887566122A1403BA0030AE77 /* main.swift */; };
 		8875661E2A1403FA0030AE77 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 8875661D2A1403FA0030AE77 /* ArgumentParser */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		884DDE9D2A22917B00DD138F /* prompt-params.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "prompt-params.csv"; sourceTree = "<group>"; };
 		8875660F2A1403BA0030AE77 /* sparky */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sparky; sourceTree = BUILT_PRODUCTS_DIR; };
 		887566122A1403BA0030AE77 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8875661A2A1403E10030AE77 /* prompt-params.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "prompt-params.csv"; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				884DDEA02A24109F00DD138F /* q20kshare in Frameworks */,
 				8875661E2A1403FA0030AE77 /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +48,7 @@
 		887566062A1403BA0030AE77 = {
 			isa = PBXGroup;
 			children = (
+				884DDE9D2A22917B00DD138F /* prompt-params.csv */,
 				887566192A1403E10030AE77 /* Sample Data */,
 				887566112A1403BA0030AE77 /* sparky */,
 				887566102A1403BA0030AE77 /* Products */,
@@ -94,6 +98,7 @@
 			name = sparky;
 			packageProductDependencies = (
 				8875661D2A1403FA0030AE77 /* ArgumentParser */,
+				884DDE9F2A24109F00DD138F /* q20kshare */,
 			);
 			productName = sparky;
 			productReference = 8875660F2A1403BA0030AE77 /* sparky */;
@@ -125,6 +130,7 @@
 			mainGroup = 887566062A1403BA0030AE77;
 			packageReferences = (
 				8875661C2A1403FA0030AE77 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				884DDE9E2A24109F00DD138F /* XCRemoteSwiftPackageReference "q20kshare" */,
 			);
 			productRefGroup = 887566102A1403BA0030AE77 /* Products */;
 			projectDirPath = "";
@@ -306,6 +312,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		884DDE9E2A24109F00DD138F /* XCRemoteSwiftPackageReference "q20kshare" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/billdonner/q20kshare";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		8875661C2A1403FA0030AE77 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
@@ -317,6 +331,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		884DDE9F2A24109F00DD138F /* q20kshare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 884DDE9E2A24109F00DD138F /* XCRemoteSwiftPackageReference "q20kshare" */;
+			productName = q20kshare;
+		};
 		8875661D2A1403FA0030AE77 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8875661C2A1403FA0030AE77 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;

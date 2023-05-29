@@ -2,7 +2,7 @@
 //  main.swift
 //  substitute
 //
-//  Created by bill donner on 5/14/23.
+//  Created by bill donner and chatGPT on 5/14/23.
 //
 /*
  Generate a swift command line program for macOS named Sparky using spm Argument Parser
@@ -136,45 +136,3 @@ struct Sparky: ParsableCommand {
 }
 
 Sparky.main()
-
-//func generatePumperFiles(_ inputTextFile: URL, _ substitutions: [[String]], _ outputTextFile: URL?) throws -> [URL] {
-//  let date = Date()
-//  var outputFiles = [URL]()
-//  for (index, substitution) in substitutions.enumerated()  {
-//    if substitution != [] {
-//
-//      let outputFileName = (outputTextFile?.deletingPathExtension().lastPathComponent ?? inputTextFile.deletingPathExtension().lastPathComponent) + String(format:"%03d",index+1)
-//
-//      let outputFile = outputTextFile?.deletingLastPathComponent().appendingPathComponent(outputFileName).appendingPathExtension("txt") ?? inputTextFile.deletingLastPathComponent().appendingPathComponent(outputFileName).appendingPathExtension("txt")
-//
-//      let inputString = try String(contentsOf: inputTextFile)
-//
-//      var outputString = inputString
-//      for (i, symbol) in substitution.enumerated() {
-//        outputString = outputString.replacingOccurrences(of: "$\(i)", with: symbol)
-//      }
-//      // insert batchid
-//
-//      outputString = outputString.replacingOccurrences(of: "$GENERATED", with: "\(date)")
-//      if outputString != "" {
-//        if outputTextFile != nil { // output filespec was given
-//
-//          try outputString.write(to: outputFile, atomically: true, encoding: .utf8)
-//
-//        } else {
-//          print("Prompt: \(index+1)")
-//          print("generated: \(date)")
-//          print("args: \(substitution)")
-//          print("template: \(inputTextFile)")
-//          print("+--------------- Cut Here and Paste into AI--------------------------+\n")
-//
-//          print(outputString)
-//
-//          print("+------------------  End of Cut Area  -------------------------------+\n")
-//        }
-//      }
-//      outputFiles.append(outputFile)
-//    }
-//  }
-//  return outputFiles
-//}
