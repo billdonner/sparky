@@ -1,31 +1,20 @@
-////author: wld date: 24 May 2023
-//PROMPT consider the following structure
-struct Challenge   {
-  let id : String
-  let idx: Int // index within json array
-  let timestamp: String // time and date when generated
-  let question: String
-  let topic: String
-  let hint:String // a hint to show if the user needs help
-  let answers: [String]
-  let correct: String // which answer is correct
-  let explanation: String // reasoning behind the correctAnswer
-  let article: String // URL of article about the correct Answer
-  let image:String // URL of image of correct Answer
-}
+///Prompt: author wld 31 may 2023
+here is JSON block for a question and answer game about cats:
+{
+   "question": "Which cat is most purple?",
+   "answers": ["Pekinese","Siamese","Black"],
+   "topic": "Cats",
+   "hint": "Think Thailand",
+   "correct": "Siamese",
+   "explanation": "The siamese cat comes from the land of purple.",
+   "article": "https://en.wikipedia.org/wiki/Siamese_cat",
+   "image":""
+ }
 
-/* Generate $2 Challenges as an Array of JSON each with an interesting, pithy, question and  Four answers and at least one explanation per question
- 
- on the Subject of $0 ,
- setting the topic to $1 
- 
- and the idx to $INDEX
- and the id to $UUID
- and the timestamp to $NOW
- Do not include trailing commas in the answers json array
- Ensure all field names are lowercase and trimmed of whitespace
- Ensure all field names are enclosed in double-quotes
- Ensure that answer field is not an array
- Translate "‘" to "'" within field values */
-let challenge = [
-  {
+Generate a JSON array of 3 blocks for a game about $0 with a theme of $1
+make the questions and explanations fun and witty
+include an image only if freely licensable
+include an article only if freely licensable
+ensure each generated block is valid JSON
+
+[{
