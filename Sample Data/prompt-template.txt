@@ -16,7 +16,6 @@ Generate a JSON array of $2 blocks for a game about $0 with a theme of $1
 make the questions and explanations fun and witty
 include an image only if freely licensable
 include an article only if freely licensable
-within a field, translate double-quotes to single-quotes
 ensure each generated block is valid JSON
 
 [{
