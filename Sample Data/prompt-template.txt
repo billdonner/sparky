@@ -1,16 +1,16 @@
 ///Prompt: author wld 1 Jun 2023
 here is JSON block for a question and answer game about cats:
 {
-   "question": "Which cat is most purple?",
-   "answers": ["Pekinese","Siamese","Black"],
-   "topic": "Cats",
-   "theme": "Freaky Felines",
-   "hint": "Think Thailand",
-   "correct": "Siamese",
-   "explanation": "The siamese cat comes from the land of purple.",
-   "article": "https://en.wikipedia.org/wiki/Siamese_cat",
-   "image":""
- }
+  "question": "Who was the first president of the United States?",
+  "answers": ["Thomas Jefferson", "George Washington", "John Adams"],
+  "topic": "Presidents",
+  "theme": "Famous Men",
+  "hint": "Cut down a cherry tree",
+  "correct": "George Washington",
+  "explanation": "George Washington was an integral figure in the establishment of the United States and its new government. He was a key leader in the American Revolution and the first President of the nation.",
+  "article": "https://www.whitehouse.gov/about-the-white-house/presidents/george-washington/",
+  "image": ""
+}
 
 Generate a JSON array of $2 blocks for a game about $0 with a theme of $1
 make the questions and explanations fun and witty
