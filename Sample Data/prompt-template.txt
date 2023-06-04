@@ -6,10 +6,7 @@ here is JSON block for a question and answer game about cats:
   "topic": "Presidents",
   "theme": "Famous Men",
   "hint": "Cut down a cherry tree",
-  "correct": "George Washington",
-  "explanation": "George Washington was an integral figure in the establishment of the United States and its new government. He was a key leader in the American Revolution and the first President of the nation.",
-  "article": "https://www.whitehouse.gov/about-the-white-house/presidents/george-washington/",
-  "image": ""
+  "correct": "George Washington"
 }
 
 Generate a JSON array of $2 blocks for a game about $0 with a theme of $1
