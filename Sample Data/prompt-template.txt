@@ -1,5 +1,5 @@
 ///Prompt: author wld 1 Jun 2023
-here is JSON block for a question and answer game about cats:
+here is JSON block for a question and answer game about Presidents:
 {
   "question": "Who was the first president of the United States?",
   "answers": ["Thomas Jefferson", "George Washington", "John Adams"],
@@ -7,13 +7,18 @@ here is JSON block for a question and answer game about cats:
   "theme": "Famous Men",
   "hint": "Cut down a cherry tree",
   "correct": "George Washington"
+  /// article: was here
+  /// image: was here
+  /// explanation: was here
 }
 
 Generate a JSON array of $2 blocks for a game about $0 with a theme of $1
 make the questions and explanations fun and witty
-include an image only if freely licensable
-include an article only if freely licensable
+///include an image only if freely licensable
+///include an article only if freely licensable
+///include an explanation if possible
 use double quotes except within field values, where single quotes should be utilized
 ensure each generated block is valid JSON
 
 [{
+
