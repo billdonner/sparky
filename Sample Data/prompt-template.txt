@@ -1,4 +1,4 @@
-///Prompt: author wld 1 Jun 2023
+///Prompt: author wld 5 Jun 2023
 here is JSON block for a question and answer game about Presidents:
 {
   "question": "Who was the first president of the United States?",
@@ -6,12 +6,14 @@ here is JSON block for a question and answer game about Presidents:
   "topic": "Presidents",
   "theme": "Famous Men",
   "hint": "Cut down a cherry tree",
-  "correct": "George Washington"
+  "correct": "George Washington",
+  "explanation": "General Washington led the Americans agamst the British before being elected President"
 }
 
-Generate a JSON array of $2 blocks for a game about $0 with a theme of $1
+Generate a JSON array of $2 blocks with a topic of $0 with a theme of $1
 make the questions and explanations fun and witty
 use double quotes except within field values, where single quotes should be utilized
+do not generate a comma after the last field value within the block
 ensure each generated block is valid JSON
 
 [{
