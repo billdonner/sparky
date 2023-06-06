@@ -1,11 +1,10 @@
 ///Prompt: author wld 5 Jun 2023
 here is JSON block for a question and answer game about Presidents:
 {
-  "question": "Who was the first president of the United States?",
-  "answers": ["Thomas Jefferson", "George Washington", "John Adams"],
   "topic": "Presidents",
   "theme": "Famous Men",
-  "hint": "Cut down a cherry tree",
+  "question": "Who was the first president of the United States?",
+  "answers": ["Thomas Jefferson", "George Washington", "John Adams"],
   "correct": "George Washington",
   "explanation": "General Washington led the Americans agamst the British before being elected President"
 }
@@ -17,4 +16,6 @@ do not generate a comma after the last field value within the block
 ensure each generated block is valid JSON
 
 [{
+  "topic": "$0",
+  "theme": "$1",
 
