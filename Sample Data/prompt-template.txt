@@ -10,13 +10,11 @@ here is JSON block for a question and answer game about Presidents:
   "explanation": "General Washington led the Americans against the British before being elected President"
 }
 
-Generate a JSON array of $2 blocks with a topic of $0 with a theme of $1
+Generate a JSON array of $2 blocks with a topic of "$0" with a theme of "$1"
 make the questions and explanations fun and witty
 use double quotes except within field values, where single quotes should be utilized
 do not generate a comma after the last field value within the block
-ensure each generated block has all seven fields and is valid JSON
+ensure every generated block has a "topic" and a "theme" field and is valid JSON
 
 [{
-  "topic": "$0",
-  "theme": "$1",
 
