@@ -77,14 +77,7 @@ func parseSubstitutionsCSVFile(_ url: URL) throws -> [[String]] {
   return substitutions
 }
 
-func generateFileName(prefixPath:String) -> String {
-  let date = Date()
-  let formatter = DateFormatter()
-  formatter.dateFormat = "yyyyMMdd_HHmmss"
-  let dateString = formatter.string(from: date)
-  let fileName = prefixPath + "_" + dateString + ".txt"
-  return fileName
-}
+
 
 struct Sparky: ParsableCommand { 
   static var configuration = CommandConfiguration(
@@ -99,6 +92,21 @@ struct Sparky: ParsableCommand {
 
   @Option(name: .shortAndLong, help: "The optional output text file URL otherwise outputs to the console")
   var output: String?
+  
+  @Option(name: .shortAndLong, help: "Make output file name unique")
+  var unique: Bool = false
+  
+  func generateFileName(prefixPath:String) -> String {
+    if unique {
+      let date = Date()
+      let formatter = DateFormatter()
+      formatter.dateFormat = "yyyyMMdd_HHmmss"
+      let dateString = formatter.string(from: date)
+      return prefixPath + "_" + dateString + ".txt" 
+    } else {
+     return prefixPath +  ".txt"
+    }
+  }
 
   func sparky_essence(_ substitutionsCSVFile: URL, _ inputTextFile: URL) throws {
     let outputTextFile = output != nil ? URL(string: output!) : nil

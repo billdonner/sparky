@@ -1,6 +1,7 @@
 #  Sparky - Build ChatGPT prompts from templates and paramaters
 
-Freeport.Software - for internal use only 0.0.1ß
+Freeport.Software - for internal use only 0.1.3
+now supports --unique
 
 ```
 OVERVIEW: Generate Many Outputs From One Template and A CSV File of Parameters
