@@ -64,10 +64,6 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--unique true"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
             argument = "--help"
             isEnabled = "NO">
          </CommandLineArgument>
