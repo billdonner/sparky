@@ -60,7 +60,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--output file:///Users/billdonner/Desktop/pumper-input-data.txt"
+            argument = "--output file:///users/billdonner/desktop/fs/between_0_1.txt"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

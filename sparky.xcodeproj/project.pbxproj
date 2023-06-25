@@ -25,12 +25,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		884DDE9D2A22917B00DD138F /* prompt-params.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "prompt-params.csv"; sourceTree = "<group>"; };
 		884DDEAD2A242F5100DD138F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8875660F2A1403BA0030AE77 /* sparky */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sparky; sourceTree = BUILT_PRODUCTS_DIR; };
 		887566122A1403BA0030AE77 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		8875661A2A1403E10030AE77 /* prompt-params.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "prompt-params.csv"; sourceTree = "<group>"; };
-		8875661B2A1403E10030AE77 /* prompt-template.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "prompt-template.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				884DDEAD2A242F5100DD138F /* README.md */,
-				884DDE9D2A22917B00DD138F /* prompt-params.csv */,
-				887566192A1403E10030AE77 /* Sample Data */,
 				887566112A1403BA0030AE77 /* sparky */,
 				887566102A1403BA0030AE77 /* Products */,
 			);
@@ -71,15 +66,6 @@
 				887566122A1403BA0030AE77 /* main.swift */,
 			);
 			path = sparky;
-			sourceTree = "<group>";
-		};
-		887566192A1403E10030AE77 /* Sample Data */ = {
-			isa = PBXGroup;
-			children = (
-				8875661A2A1403E10030AE77 /* prompt-params.csv */,
-				8875661B2A1403E10030AE77 /* prompt-template.txt */,
-			);
-			path = "Sample Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

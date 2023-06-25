@@ -11,7 +11,7 @@ supplied in the CSV File.
 Each line of the CSV generates another output file.
 
 
-USAGE: sparky <input-text-file-url> <substitutions-csv-file-url> [--output <output>]
+USAGE: sparky <input-text-file-url> <substitutions-csv-file-url> [--output <output>] [--unique <unique>]
 
 ARGUMENTS:
   <input-text-file-url>   The input text file URL
@@ -21,6 +21,6 @@ ARGUMENTS:
 OPTIONS:
   -o, --output <output>   The optional output text file URL otherwise outputs
                           to the console
+  -u, --unique <unique>   Make output file name unique (default: false)
   -h, --help              Show help information.
-  
   ```
