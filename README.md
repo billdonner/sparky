@@ -1,6 +1,6 @@
 #  Sparky - Build ChatGPT prompts from templates and paramaters
 
-Freeport.Software - for internal use only 0.2.1
+Freeport.Software - for internal use only 0.2.13
 now supports --unique
 
 ```

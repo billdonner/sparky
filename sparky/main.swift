@@ -82,7 +82,8 @@ func parseSubstitutionsCSVFile(_ url: URL) throws -> [[String]] {
 struct Sparky: ParsableCommand { 
   static var configuration = CommandConfiguration(
     abstract: "Generate A Script of Prompts From One Template and A CSV File of Parameters",
-    discussion: "The template file is any file with $0 - $9 symbols that are replaced by values supplied in the CSV File.\nEach line of the CSV generates another prompt appended to the output script.\n")
+    discussion: "The template file is any file with $0 - $9 symbols that are replaced by values supplied in the CSV File.\nEach line of the CSV generates another prompt appended to the output script.\n",
+    version: "0.2.13")
   
   @Argument(  help: "The input text file URL")
   var inputTextFileURL: String

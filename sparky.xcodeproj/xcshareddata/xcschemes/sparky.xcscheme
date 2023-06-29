@@ -52,11 +52,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "https://billdonner.com/fs/gd/prompt-template.txt"
+            argument = "file:///users/billdonner/desktop/prompt-related/prompt-template.txt"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "https://billdonner.com/fs/gd/prompt-params.csv"
+            argument = "file:///users/billdonner/desktop/prompt-related/prompt-params1x1.csv"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
